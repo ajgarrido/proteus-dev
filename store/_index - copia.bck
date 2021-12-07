@@ -1,0 +1,547 @@
+import data from '~/static/json/paquetesclaro.json';
+import { db } from "@/plugins/firebase.js";
+import axios from '~/plugins/axios';
+//import nuxtStorage from 'nuxt-storage';
+
+
+
+
+export const state = () => ({
+  catalogo: data[0],
+  fire:'',
+  user: JSON.parse(localStorage.getItem('user')) || '',
+  token: localStorage.getItem('token') || '',
+  //user: nuxtStorage.localStorage.getData('user') | '',
+  //token: nuxtStorage.localStorage.getData('token') | '',
+  status: ''
+})
+
+export const mutations = {
+
+  setFire(state, payload){
+    state.fire = payload
+  },
+
+
+  setAuthRequest(state, payload){
+    state.status = 'loading'
+  },
+  setAuthError(state, payload){
+    state.status = 'error'
+  },
+  setAuthSuccess(state, payload){
+    state.status = 'success'
+    state.token = payload.token
+    state.user = payload.user
+  },
+
+  setAuthLogout(state, payload){
+    state.status = 'logout'
+    state.token = null
+    state.user = ''
+  },
+
+	setCatalogo(state, payload){
+		state.catalogo = payload;
+	},
+
+  setPlanes(state, payload){
+
+    state.catalogo.planes.filter(plan => {
+      plan.estado = false
+    })
+
+    state.catalogo.beneficios.filter(beneficio => {
+      beneficio.estado = true
+    })
+
+    /*if (state.catalogo.planes.length)
+      state.catalogo.planes.filter(plan => {
+        plan.estado = payload
+      })
+      state.catalogo.beneficios.filter(beneficio => {
+        beneficio.estado = payload
+      })*/
+
+  },
+  setPlan(state, payload){
+
+    let plan
+
+    state.catalogo.planes.filter(plan => {
+      if(plan.id === payload.id){
+        plan.estado = true
+      }else{
+        plan.estado = false
+      }
+    })
+
+    state.catalogo.beneficios.find(beneficio => {
+      if(beneficio.plan_id === payload.id){
+        beneficio.estado = true
+      }else{
+        beneficio.estado = false
+      }
+    })
+
+    /*if (state.catalogo.planes.length)
+      plan = state.catalogo.planes.find(plan => plan.id === payload.id)
+    if (plan) {
+      plan.estado = !plan.estado
+      state.catalogo.beneficios.find(beneficio => {
+        if(beneficio.plan_id === plan.id){
+          beneficio.estado = plan.estado
+        }
+      })
+    }*/
+
+  },
+
+  setMarcas(state, payload){
+
+    state.catalogo.marcas.filter(marca => {
+      marca.estado = false
+    })
+
+    state.catalogo.equipos.filter(equipo => {
+      equipo.estado = true
+    })
+
+    /*if (state.catalogo.marcas.length)
+      state.catalogo.marcas.filter(marca => {
+        marca.estado = payload
+      })
+      state.catalogo.equipos.filter(equipo => {
+        equipo.estado = payload
+      })*/
+
+  },
+  setMarca(state, payload){
+
+    let marca
+
+    state.catalogo.marcas.filter(marca => {
+      if(marca.id === payload.id){
+        marca.estado = true
+      }else{
+        marca.estado = false
+      }
+    })
+
+    state.catalogo.equipos.find(equipo => {
+      if(equipo.marca_id === payload.id){
+        equipo.estado = true
+      }else{
+        equipo.estado = false
+      }
+    })
+
+
+    /*if (state.catalogo.marcas.length)
+      marca = state.catalogo.marcas.find(marca => marca.id === payload.id)
+    if (marca) {
+      marca.estado = !marca.estado
+      state.catalogo.equipos.find(equipo => {
+        if(equipo.marca_id === marca.id){
+          equipo.estado = marca.estado
+        }
+      })
+    }*/
+  },
+}
+
+export const getters = {
+  getShowPlanes: state => {
+
+    const total = state.catalogo.planes.length;
+    let x = 0;
+
+    let totalfilter = state.catalogo.planes.filter(plan =>{
+      if(plan.estado == false){
+        return plan;
+      }
+    })
+
+    if(total == totalfilter.length){
+      return true
+    }else{
+      return false
+    }
+
+  },
+  getShowMarcas: state => {
+
+    const total = state.catalogo.marcas.length;
+    let x = 0;
+
+    let totalfilter = state.catalogo.marcas.filter(marca =>{
+      if(marca.estado == false){
+        return marca;
+      }
+    })
+
+    if(total == totalfilter.length){
+      return true
+    }else{
+      return false
+    }
+
+  },
+  getMarca: (state) => (id) => {
+    return state.catalogo.marcas.find(marca =>{
+      if(marca.id === id){
+        return marca;
+      }
+    })
+  },
+  getPlan: (state) => (id) => {
+    return state.catalogo.planes.find(plan =>{
+      if(plan.id === id){
+        return plan;
+      }
+    })
+  },
+  getPlanes: state => {
+    return state.catalogo.planes;
+  },
+  getBeneficios: state => {
+    return state.catalogo.beneficios;
+  },
+  getOfertas: state => {
+    return state.catalogo.ofertas;
+  },
+  getMarcas: state => {
+    return state.catalogo.marcas;
+  },
+  getEquipos: state => {
+    return state.catalogo.equipos;
+  },
+  getCatalogo: state => {
+    return state.catalogo
+  },
+
+  getUser: state =>{
+    return state.user
+  },
+
+  getAuthenticated: state =>{
+    return !!state.token
+  }
+  
+}
+
+export const actions = {
+  async nuxtServerInit ({ commit, dispatch }, { req, isDev }) {
+    //let apiHost = req.protocol + '://' + (isDev ? req.host + ':9000' : 'api.' + req.host) + '/'
+    //commit('setApiHost', apiHost)
+    await dispatch('actLoadData');
+  },
+
+  //async nuxtServerInit({ dispatch }) {
+  //  await dispatch('readFromRealtimeDb');
+  //},
+  /*actLoadData({commit, dispatch}) {
+    return new Promise((resolve, reject) => {
+
+      db.ref('0').on('value', function(snapshot) {
+        //self.datos = snapshot.val();
+        console.log("datos",snapshot.val());
+        console.log("listo actLoadData");
+        resolve()
+       // snapshot.forEach(function(childSnapshot) {
+          //console.log("childSnapshot",childSnapshot.val());
+          //var childKey = childSnapshot.key;
+          //var childData = childSnapshot.val();
+          // ...
+       // });
+        //console.log("snapshot",snapshot);
+      })
+
+      
+    })
+    
+  },*/
+  /*nuxtServerInit ({ commit }, { req }) {
+
+    if (req) {
+      console.log("listo store");
+      //commit('user', req.session.user)
+    }
+    
+    
+  },*/
+  /*async LOGIN({commit}, envio) {
+
+    console.log("envio", envio);
+
+    await this.$axios.post('http://52.170.213.127/api/login', envio, {
+    headers: { Authorization: "Bearer " + "PAoHJDJsI4ABjcCkgbMGhmH0lj2nKy8CznxndVeVoKfb939paSg1k1Wj7tiH" }
+  })
+    //await axios.get('/posts')
+      .then((res) => {
+        if (res.status === 200) {
+          //commit('setCatalogo', res.data)
+          console.log("load axios",res.data)
+        }else{
+          console.log("load error",res.data)
+        }
+
+        //resolve(res)
+      }).catch(function(error){
+        console.log("error", error);
+        //reject(error)
+      })
+  }*/
+	/*async get({commit}, axios) {
+		await this.$axios.get('/assets/json/paquetesclaro.json')
+    //await axios.get('/posts')
+      .then((res) => {
+        if (res.status === 200) {
+          //commit('setCatalogo', res.data)
+          console.log("load axios",res.data)
+        }
+      }).catch(function(error){
+      	console.log("error", error);
+      })
+  },*/
+
+  /*async LOGIN({commit}, envio) {
+
+    //CORE.Util.log('login', envio);
+
+    //store.commit('SET_LOADING', true);
+
+    console.log("envio",envio);
+    //console.log("axios",axios);
+
+    //return;
+
+    return new Promise(function(resolve, reject){
+
+      await this.$axios.post('http://52.170.213.127/api/login', envio).then((response) => {
+      
+      //axios.post('http://52.170.213.127/api/login', envio).then(function(response){
+
+        //CORE.Util.log("response login",response);
+
+        sessionStorage.setItem('token', response.data.token);
+
+        store.commit('SET_USER', {
+          id: response.data.id,
+          profile_id: response.data.profile_id,
+          secret: response.data.secret,
+          name: response.data.username
+        });
+
+        //store.commit('SET_LOADING', false);
+        store.commit('LOGIN_SUCCESS');
+
+        console.log("response",response);
+        
+        resolve(response);
+      }, function(error) {
+        
+        //CORE.Util.log("error login",error);
+        //CORE.Util.notificacion(0, "tc", "Error:", '• ' + error.statusText, 4000);
+
+        reject(error);
+      });
+
+    });
+  }*/
+  
+  /*async LOGIN({commit}, envio) {
+
+    console.log("envio", envio);
+
+    await axios.post('/login', envio)
+    //await axios.get('/posts')
+      .then((resp) => {
+
+        if(resp.data.rpta == "error"){
+          console.log("resp error",resp)
+          localStorage.removeItem('auth-hash');
+        }else{
+          let auth = resp.data;
+          auth.loggedIn = true;  
+
+          localStorage.setItem('auth-hash', auth.hash);
+
+          commit('setAuth', auth);
+
+          console.log("resp ok",auth);
+        }
+
+        
+        //resolve(res)
+      }).catch(function(error){
+        console.log("error", error);
+        //reject(error)
+      })
+  } */
+
+  actLogout({commit, dispatch}) {
+    return new Promise((resolve, reject) => {
+      commit('setAuthLogout')
+
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
+      localStorage.removeItem('timeexpiry')
+      //nuxtStorage.localStorage.removeItem('token');
+
+
+      //localStorage.removeItem('user')
+      //sessionStorage.clear()
+      delete axios.defaults.headers.common['Authorization']
+      resolve()
+    })
+  },
+
+  async actLoadData({commit, dispatch}) {
+    console.log("que sera !")
+    const messageRef = db.ref('0')
+    try {
+      const snapshot = await messageRef.on('value')
+      commit('setFire',snapshot.val())
+      //alert(snapshot.val())
+    } catch (e) {
+      alert(e)
+      return
+    }
+  },
+
+  actLogin({commit, dispatch}, envio) {
+    return new Promise((resolve, reject) => { // The Promise used for router redirect in login
+    
+      this.$toast.show('Validando sesión...');
+
+      
+
+      axios.post('/login', envio)
+        .then(res => {
+          //const token = resp.data.token
+          //localStorage.setItem('user-token', token) // store the token in localstorage
+          //commit(AUTH_SUCCESS, token)
+          // you have your token, now log in your user :)
+          //dispatch(USER_REQUEST)
+          //commit(AUTH_SUCCESS, token)
+
+          //console.log("resp login",resp);
+          //return
+
+          //localStorage.clear()
+          //nuxtStorage.localStorage.clear();
+          //nuxtStorage.localStorage.removeItem('token');
+
+          localStorage.removeItem('token')
+          localStorage.removeItem('user')
+          localStorage.removeItem('timeexpiry')
+
+          if(res.data.rpta == "error"){
+            //console.log("resp error1",res)
+            //localStorage.removeItem('token');
+            //nuxtStorage.localStorage.clear();
+
+            //this.$toast.error('Error al iniciar sesión');
+
+            reject(res)
+
+          }else{
+            const token = res.data.hash;
+            const user = {
+              "nombres": res.data.nombres,
+              "empresa": res.data.empresa,
+              "dni": envio.dni,
+              "autorizo": envio.autorizo
+            }
+            
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('timeexpiry', new Date().getTime());
+
+            //nuxtStorage.localStorage.setData('token', token);
+            //nuxtStorage.localStorage.setData('user', user);
+
+            axios.defaults.headers.common['Authorization'] = token
+
+            commit('setAuthSuccess', {token: token , user: user});
+
+            this.$toast.success('Logueado exitosamente');
+
+            dispatch(readFromRealtimeDb);
+
+            resolve()
+
+
+            //localStorage.setItem('auth-hash', auth.hash);
+
+            //commit('setAuth', auth);
+
+            //console.log("resp ok",auth);
+          }
+          
+        })
+      .catch(err => {
+        //commit(AUTH_ERROR, err)
+        //nuxtStorage.localStorage.clear();
+        //nuxtStorage.localStorage.removeItem('token');
+        this.$toast.error('Proceso fallido', err);
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        localStorage.removeItem('timeexpiry')
+
+        reject(err)
+      })
+    })
+  },
+
+  /*async get({commit}, axios) {
+    await this.$axios.get('/assets/json/paquetesclaro.json')
+    //await axios.get('/posts')
+      .then((res) => {
+        if (res.status === 200) {
+          //commit('setCatalogo', res.data)
+          console.log("load axios",res.data)
+        }
+      }).catch(function(error){
+        console.log("error", error);
+      })
+  },*/
+  /*async get({commit}, axios) {
+    await this.$axios.get('/assets/json/paquetesclaro.json')
+    //await axios.get('/posts')
+      .then((res) => {
+        if (res.status === 200) {
+          //commit('setCatalogo', res.data)
+          console.log("load axios",res.data)
+        }
+      }).catch(function(error){
+        console.log("error", error);
+      })
+  },*/
+
+	/*async nuxtServerInit ({ commit }, { app }) {
+    const res = await axios.get('/paquetes')
+
+    console.log("nuxtServerInit load axios",res)
+
+	  //const res = await app.axios.$get('/posts')
+	  //commit('setCatalogo', res.data)
+	  //console.log("load axios",res.data)
+	}*/
+	/*async nuxtServerInit({ commit }, { app }) {
+    const todo = await app.$axios.$get('https://jsonplaceholder.typicode.com');
+    console.log(todo);
+    commit("setCatalogo", todo);
+  }*/
+
+
+	/*async get({commit}) {
+    await this.$axios.get('/posts')
+      .then((res) => {
+        if (res.status === 200) {
+          commit('set', res.data)
+        }
+      })
+  },*/
+}

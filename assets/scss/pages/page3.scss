@@ -1,0 +1,616 @@
+@use "sass:math";
+
+.layout{
+
+	&__main{
+		.page3{
+			position: relative;
+			&__header{
+				position: absolute;
+				
+				width: 100vw;
+				height: 100vh;
+							
+				/*object-fit: cover;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;*/
+
+				background-color: #ef2539;
+
+				&.detail{
+					background-color: #ffffff;					
+				}
+
+				/*&.bg5{
+					background-color: #ef2539;
+					//background-image: url("#{$path}/bg_proyectos.jpg");
+				}*/
+
+				.section1{
+					@include flexbox;
+
+					&__left{
+						width: 50%;
+						height: 100vh;
+						object-fit: cover;
+					  background-size: cover;
+					  background-repeat: no-repeat;
+					  background-position: center;
+
+					  @include flexbox;
+					  @include justify-content(flex-end);
+
+					  &.musico_1_detail{
+					  	background-image: url("#{$path}/musicos/detalle-abiud-mucha-meza.jpg");
+
+					  	@include to(tablet) {
+								background: url("#{$path}/musicos/abiud-mucha-meza-min.jpg") no-repeat;
+							}
+
+							@include to(movil) {
+								background: url("#{$path}/musicos/abiud-mucha-meza-min-movil.jpg") no-repeat;
+							}
+					  }
+					  &.musico_2_detail{
+					  	background-image: url("#{$path}/musicos/detalle-alma-moron.jpg");
+
+					  	@include to(tablet) {
+								background: url("#{$path}/musicos/alma-moron-min.jpg") no-repeat;
+							}
+
+							@include to(movil) {
+								background: url("#{$path}/musicos/alma-moron-min-movil.jpg") no-repeat;
+							}
+					  }
+					  &.musico_3_detail{
+					  	background-image: url("#{$path}/musicos/detalle-chicho-cavero.jpg");
+
+					  	@include to(tablet) {
+								background: url("#{$path}/musicos/chicho-cavero-min.jpg") no-repeat;
+							}
+
+							@include to(movil) {
+								background: url("#{$path}/musicos/chicho-cavero-min-movil.jpg") no-repeat;
+							}
+					  }
+
+					  @include to(tablet) {
+					  	width: 100%;
+					  	height: 293px;
+					  }
+
+					  @include to(movil) {
+					  	height: 293px;
+					  }
+
+					  .number{
+					  	@include align-self(center);
+					  	@include to(tablet) {
+					  		padding-right: 5%;
+					  		padding-bottom: 25px;
+					  		@include align-self(flex-end);
+					  	}
+					  	@include to(movil) {
+					  		padding-right: 5%;
+					  	}
+					  	h2{
+					  		font: normal 600 em(180) $font1;
+								color: #ef2539;
+								letter-spacing: -0.9px;
+
+								@include to(laptop) {
+									font-size: em(160);
+								}
+
+								@include to(tablet-h) {
+									font-size: em(140);
+								}
+
+								@include to(tablet) {
+									font-size: em(120);
+								}
+
+								@include to(movil) {
+									font-size: em(90);
+								}
+					  	}
+					  }
+					}
+
+					&__right{
+						width: 50%;
+						height: 100vh;
+						background-color: #ffffff;
+
+						@include flexbox;
+					  @include justify-content(flex-start);
+
+					  @include to(tablet) {
+					  	display: none;
+					  }
+					  
+					  .number{
+					  	@include align-self(center);
+					  	h2{
+					  		font: normal 600 em(180) $font1;
+								color: #ef2539;
+								letter-spacing: -0.9px;
+
+								@include to(laptop) {
+									font-size: em(160);
+								}
+
+								@include to(tablet-h) {
+									font-size: em(140);
+								}
+					  	}
+					  }
+					}
+
+				}
+
+			}
+
+			&__main{
+				position: relative;
+
+				
+
+				.section1{
+					@include flexbox;
+					@include justify-content(flex-end);
+
+					.align{
+						width: 80%;
+						@include to(tablet) {
+							width: 100%;
+						}
+					}
+
+					&__header{
+						@include to(tablet) {
+							padding-top: 84px;
+						}
+
+						@include to(movil) {
+							padding-top: 64px;
+						}
+						.content{
+
+							&__list{
+								@include flexbox;
+								@include flex-wrap(wrap);
+
+								@include to(tablet) {
+									@include flex-direction(column);
+								}
+
+								.item{
+									@include flex(1);
+									height: 100vh;
+									position: relative;
+									@include flexbox;
+									@include justify-content(center);
+
+									cursor: pointer;
+
+									@include to(tablet) {
+										height: (63.9 - math.div(100vh, 3));
+										@include flex(none);
+									}
+
+									@include to(movil) {
+										height: (62.9 - math.div(100vh, 3));
+										@include flex(none);
+									}
+
+									&:hover{
+										
+										hgroup{
+											background-color: #ef2539;
+
+											@include transicion(all,0.2s,ease,0s);
+
+											h3{
+												color: #ffffff;
+				  							@include transicion(all,0.2s,ease,0s);
+											}
+
+											&:after {
+												border-color: transparent #ef2539 #ef2539 transparent;
+												@include transicion(all,0.2s,ease,0s);
+
+												@include to(tablet) {
+													border-color: #ef2539 #ef2539 transparent transparent ;
+													@include transicion(all,0.2s,ease,0s);
+												}
+
+											}
+										}
+
+										h2{
+											color: #ef2539;
+											@include transicion(all,0.2s,ease,0s);
+										}
+									}
+
+									&__image{
+										width: 100%;
+										height: 100vh;
+										position: absolute;
+										top: 0px;
+										left: 0px;
+										
+										object-fit: cover;
+									  background-size: cover;
+									  background-repeat: no-repeat;
+									  background-position: center;
+
+									  @include to(tablet) {
+											height: (63.9 - math.div(100vh, 3));
+										}
+
+										@include to(movil) {
+											height: (62.9 - math.div(100vh, 3));
+										}
+
+									  &.musico_1{
+									  	background-image: url("#{$path}/musicos/abiud-mucha-meza.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/musicos/abiud-mucha-meza-min.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/abiud-mucha-meza-movil.jpg");
+											}*/
+									  	
+									  }
+									  &.musico_2{
+									  	background-image: url("#{$path}/musicos/alma-moron.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/musicos/alma-moron-min.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/alma-moron-movil.jpg");
+											}*/
+									  }
+									  &.musico_3{
+									  	background-image: url("#{$path}/musicos/chicho-cavero.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/musicos/chicho-cavero-min.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+									}
+									&__info{
+										position: relative;
+										@include align-self(center);
+
+										@include to(tablet) {
+											width: 80%;
+											@include flexbox;
+											@include justify-content(space-between);
+										}
+
+										@include to(movil) {
+											@include align-self(flex-end);
+											@include align-items(flex-start);
+										}
+
+										hgroup{
+											background-color: #ffffff;
+											padding: 15px 20px;
+											position: relative;
+											display: table;
+											margin-bottom: 20px;
+											@include transicion(all,0.2s,ease,0s);
+
+											@include to(tablet) {
+												@include order(2);
+												background-color: #ef2539;
+												padding: 18px 20px;
+											}
+
+											@include to(movil) {
+			  								padding: 10px 15px;
+			  								@include align-self(flex-end);
+			  							}
+
+											h3{
+												font: normal 600 em(18) $font1;
+												color: #ef2539;
+												line-height: 1.0;
+				  							letter-spacing: 2px;
+				  							@include transicion(all,0.2s,ease,0s);
+				  							@include to(tablet) {
+				  								color: #ffffff;
+				  								font-size: em(22);
+				  							}
+
+				  							@include to(movil) {
+				  								font-size: em(18);
+				  							}
+											}
+
+											&:after {
+												content: "";
+												position: absolute;
+												border-width: 6px;
+												border-style: solid;
+									
+												bottom: 100%;
+												left: 15%;
+												border-color: transparent #ffffff #ffffff transparent;
+												@include transicion(all,0.2s,ease,0s);
+
+												@include to(tablet) {
+													margin-top: -5px;
+													top: 30%;
+													right: 100%;
+
+													bottom: inherit;
+													left: inherit;
+										
+													/*bottom: 100%;
+													left: 15%;*/
+													border-color: #ef2539 #ef2539 transparent transparent ;
+													@include transicion(all,0.2s,ease,0s);
+												}
+
+											}
+										}
+
+										h2{
+											font: normal 600 em(44) $font1;
+											color: #ffffff;
+											text-align: center;
+											@include transicion(all,0.2s,ease,0s);
+
+											@include to(tablet) {
+												@include order(1);
+												color: #ef2539;
+												font-size: em(60);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+
+
+				}
+
+				.section2{
+					@include flexbox;
+					@include justify-content(flex-end);
+
+					@include to(tablet) {
+						@include justify-content(center);						
+					}
+
+					&__right{
+						width: 50%;
+						
+						padding-top: 10%;
+						@include to(laptop) {
+							padding-top: 6%;
+						}
+						@include to(tablet-h) {
+							padding-top: 8%;
+						}
+
+						@include to(tablet) {
+							width: 76%;
+							padding: 290px 0 0%;
+						}
+
+						@include to(tablet) {
+							padding: 263px 0 0%;
+						}
+
+						.content{
+							width: 60%;
+
+							&__info{
+								@include to(tablet) {
+									margin-bottom: 10%;
+								}
+								hgroup{
+									background-color: #ef2539;
+									padding: 18px 20px;
+									position: relative;
+									display: table;
+									margin-bottom: 25px;
+
+									h3{
+										font: normal 600 em(25) $font1;
+										color: #ffffff;
+										line-height: 1.0;
+		  							letter-spacing: 2px;
+		  							@include to(laptop) {
+											font-size: em(18);
+										}
+
+										@include to(tablet) {
+											font-size: em(18);
+										}
+
+										@include to(movil) {
+											br{
+												display: none;
+											}
+										}
+									}
+
+									&:after {
+										content: "";
+										position: absolute;
+										border-width: 6px;
+										border-style: solid;
+
+										//margin-left: -55px;
+										top: 100%;
+										left: 15%;
+										border-color: #ef2539 transparent transparent #ef2539;
+										//transform:translateY(-50%);
+									}
+
+									.tooltip {
+										position: relative;
+										display: inline-block;
+										border-bottom: 1px dotted black;
+									}
+									.tooltip .tiptext {
+										visibility: hidden;
+										width: 120px;
+										background-color: black;
+										color: #fff;
+										text-align: center;
+										border-radius: 3px;
+										padding: 6px 0;
+										position: absolute;
+										z-index: 1;
+										box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+									}
+									.tooltip .tiptext::after {
+										content: "";
+										position: absolute;
+										border-width: 5px;
+										border-style: solid;
+									}
+									.tooltip:hover .tiptext {
+										visibility: visible;
+									}
+
+
+
+									.tooltip.top .tiptext{
+										margin-left: -60px;
+										bottom: 150%;
+										left: 50%;
+									}
+									.tooltip.top .tiptext::after{
+										margin-left: -5px;
+										top: 100%;
+										left: 50%;
+										border-color: #2E2E2E transparent transparent transparent;
+									}
+
+
+
+									.tooltip.bottom .tiptext{
+										margin-left: -60px;
+										top: 150%;
+										left: 50%;
+									}
+									.tooltip.bottom .tiptext::after{
+										margin-left: -5px;
+										bottom: 100%;
+										left: 50%;
+										border-color: transparent transparent #2E2E2E transparent;
+									}
+
+
+									.tooltip.left .tiptext{
+										top: -5px;
+										right: 110%;
+									}
+									.tooltip.left .tiptext::after{
+										margin-top: -5px;
+										top: 50%;
+										left: 100%;
+										border-color: transparent transparent transparent #2E2E2E;
+									}
+
+
+									.tooltip.right .tiptext{
+										top: -5px;
+										left: 110%;
+									}
+									.tooltip.right .tiptext::after{
+										margin-top: -5px;
+										top: 50%;
+										right: 100%;
+										border-color: transparent #2E2E2E transparent transparent;
+									}
+
+
+								}
+
+								h4{
+									font: normal 600 em(22) $font1;
+									color: #000000;
+									line-height: 0.86;
+  								letter-spacing: 2.44px;
+  								margin-bottom: 30px;
+  								@include to(laptop) {
+										font-size: em(18);
+									}
+									@include to(tablet) {
+										font-size: em(19);
+										color: #000000;
+									}
+								}
+
+								p{
+									font: normal 400 em(14) $font2;
+									color: $color_t2;
+									//display: inline-block;
+									//margin: 0 20px;
+									line-height: 1.14;
+									letter-spacing: 1.5px;
+									margin-bottom: 20px;
+									@include to(laptop) {
+										font-size: em(12);
+										line-height: 1.34;
+									}
+
+									@include to(tablet-h) {
+										font-size: em(11);
+										line-height: 1.34;
+									}
+
+									@include to(tablet) {
+										font-size: em(15);
+										color: #000000;
+									}
+								}
+							}
+						}
+
+						.buttons{
+							width: 60%;
+							margin: 2% auto 0;
+							text-align: right;
+							button{
+								font: normal 600 em(18) $font1;
+								color: #000000;
+								margin-right: 10px;
+								display: inline-block;
+								width: 40px;
+								height: 40px;
+
+								&.swiper-button-disabled{
+									color: #cfcfcf;
+								}
+							}
+						}
+						
+					}
+
+				}
+			}
+			
+		}
+	}
+}
+

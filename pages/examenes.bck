@@ -1,0 +1,50 @@
+<template lang="pug">
+  .layout__main
+    .page2
+      .page2__header
+        section.section1
+          .align
+            .section1__header
+              .banner
+                .banner__mask
+                //.banner__image(:style="{ backgroundImage: 'url(' + detail.field_banner.url + ')' }")
+                .banner__title
+                  h2 Examenes
+      .page2__main
+        section.section1
+          .align
+            .section1__main
+              .content
+                p contenidos de examenes
+</template>
+
+<script>
+
+import prismicDOM from 'prismic-dom';
+
+export default {
+  name: 'examenes',
+  layout: 'main',
+  transition: 'page',
+  head () {
+    return {
+      title: 'Examenes - Proteus Laboratorio',
+      meta: [
+          { hid: 'description', name: 'description', content: 'Proteus Laboratorio' },
+          { name: 'keywords', content: 'Proteus, Laboratorio'},
+      ]
+    }
+  },
+  /*async asyncData({ $prismic, params, error, app }) {
+    const {data} = await $prismic.api.getByUID('contenido', params.slug)
+    if (data) {
+      console.log("detail", data)
+      return {
+        detail: data
+      }
+    } else {
+      error({ statusCode: 404, message: 'Page not found' })
+    }
+  }*/
+}
+</script>

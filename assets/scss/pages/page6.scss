@@ -1,0 +1,283 @@
+.layout{
+
+	&__main{
+		.page6{
+			position: relative;
+			z-index: 11;
+			&__header{
+				position: absolute;
+				
+				width: 100vw;
+				height: 100vh;
+							
+				object-fit: cover;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+
+				background-image: url("#{$path}/bg_miniclips.jpg");
+
+				@include to(tablet) {
+					background: none;
+				}
+
+			}
+
+			&__main{
+				position: relative;
+				.section1{
+
+					.align{
+						width: 60%;
+						height: 100vh;
+						position: relative;
+						margin: 0 auto;
+						@include to(tablet) {
+							width: 100%;
+							height: auto;
+						}
+						@include to(movil) {
+							width: 100%;
+						}
+					}
+
+					&__main{
+						padding: 10% 0 0 0;
+						@include to(tablet) {
+							padding: 84px 0 0 0;
+							background: #ef2539;
+						}
+
+						@include to(movil) {
+							padding: 64px 0 0 0;
+						}
+						.content{
+
+							.buttons{
+								width: 100%;
+								margin: 4% 0 0;
+								text-align: right;
+								button{
+									font: normal 600 em(18) $font1;
+									color: #000000;
+									margin-right: 10px;
+									display: inline-block;
+									width: 40px;
+									height: 40px;
+
+									&.swiper-button-disabled{
+										color: #cfcfcf;
+									}
+								}
+							}
+
+							&__list{
+								
+								.item{
+									width: 335px;
+									height: 188px;
+									position: relative;
+									cursor: pointer;
+									margin: 10px;
+
+									
+
+									@include to(laptop) {
+										width: 235px;
+										height: 132px;
+									}
+
+									@include to(tablet) {
+										width: 100%;
+										height: 300px;
+										margin: 0px 0 0px;
+									}
+
+									@include to(movil) {
+										height: 150px;
+										margin: 0px 0 0px;
+									}
+
+									&:before{
+										content: '';
+										width: 80px;
+										height: 80px;
+										background-image: url("#{$path}/teaser/play_desktop.png");
+										background-size: cover;
+										display: block;
+										position: absolute;
+										top: 50%;
+										left: 50%;
+										margin-left: -40px;
+										margin-top: -40px;
+										@include to(laptop) {
+											width: 60px;
+											height: 60px;
+											margin-left: -30px;
+											margin-top: -30px;
+										}
+										@include to(movil) {
+											width: 40px;
+											height: 40px;
+											margin-left: -20px;
+											margin-top: -20px;
+										}
+									}
+									&__image{
+										width: 100%;
+										height: 100%;
+										/*position: absolute;
+										top: 0px;
+										left: 0px;*/
+										
+										object-fit: cover;
+									  background-size: cover;
+									  background-repeat: no-repeat;
+									  background-position: center;
+
+									  background-size: auto 100%;
+
+									  /*@include to(tablet) {
+											height: (63.9 - math.div(100vh, 3));
+										}
+
+										@include to(movil) {
+											height: (62.9 - math.div(100vh, 3));
+										}*/
+
+									  &.clip_1{
+									  	background-image: url("#{$path}/miniclips/arpa-desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/arpa-mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/abiud-mucha-meza-movil.jpg");
+											}*/
+									  	
+									  }
+									  &.clip_2{
+									  	background-image: url("#{$path}/miniclips/guitarra-electrica-desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/guitarra-electrica-mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/alma-moron-movil.jpg");
+											}*/
+									  }
+									  &.clip_3{
+									  	background-image: url("#{$path}/miniclips/saxo-andino-desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/saxo-andino-mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+									  &.clip_4{
+									  	background-image: url("#{$path}/miniclips/violin-desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/violin-mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+									  &.clip_5{
+									  	background-image: url("#{$path}/miniclips/charango_desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/charango_mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+									  &.clip_6{
+									  	background-image: url("#{$path}/miniclips/cajon_desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/cajon_mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+
+									  &.clip_7{
+									  	background-image: url("#{$path}/miniclips/abiud-desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/abiud-mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+
+									  &.clip_8{
+									  	background-image: url("#{$path}/miniclips/alma-desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/alma-mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+
+									  &.clip_9{
+									  	background-image: url("#{$path}/miniclips/chicho-desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/chicho-mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+
+									  &.clip_10{
+									  	background-image: url("#{$path}/miniclips/tarola-desktop.jpg");
+
+									  	@include to(tablet) {
+												background-image: url("#{$path}/miniclips/tarola-mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/chicho-cavero-movil.jpg");
+											}*/
+									  }
+									}
+								}
+							}
+
+							&__group{
+								@include flexbox;
+								@include flex-wrap(wrap);
+								@include justify-content(center);
+
+
+							}
+						}
+					}
+
+				}
+			}
+			
+		}
+	}
+}
+

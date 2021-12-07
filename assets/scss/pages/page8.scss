@@ -1,0 +1,690 @@
+@use "sass:math";
+
+.layout{
+
+	&__main{
+		.page8{
+			position: relative;
+			&__header{
+				position: absolute;
+				
+				width: 100vw;
+				height: 100vh;
+							
+				object-fit: cover;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+
+				background-image: url("#{$path}/bg_cancion.jpg");
+
+				@include to(tablet) {
+					background: #ef2539;
+				}
+
+			}
+
+			&__main{
+				position: relative;
+
+				.section2{
+					@include flexbox;
+					@include justify-content(center);
+					width: 100%;
+					height: 100vh;
+					&__main{
+						@include align-self(center);
+						.counter{
+							&__header{
+								padding-bottom: 15px;
+								h5{
+									font: normal 500 em(20) $font1;
+									color: $color_t1;
+									text-align: center;
+									@include to(laptop) {
+										font-size: em(18);
+									}
+									@include to(tablet-h) {
+										font-size: em(16);
+									}
+									@include to(movil) {
+										font-size: em(14);
+									}
+								}
+							}
+							&__footer{
+								padding-top: 15px;
+								h5{
+									font: normal 500 em(20) $font1;
+									color: $color_t1;
+									text-align: center;
+									@include to(laptop) {
+										font-size: em(18);
+									}
+									@include to(tablet-h) {
+										font-size: em(16);
+									}
+									@include to(movil) {
+										font-size: em(14);
+									}
+								}
+							}
+							&__main{
+								@include flexbox;
+								@include flex-wrap(wrap);
+
+								/*width: 160px;*/
+
+								@include to(tablet) {
+									width: 260px;
+								}
+
+								@include to(movil) {
+									width: 220px;
+									margin: 0 auto;
+								}
+								
+								.block{
+									width: 150px;
+									height: 150px;
+
+									margin: 0 12px;
+
+									@include flexbox;
+									@include justify-content(center);
+
+									@include opacidad(bg, #ffffff, 0.3, $shade: claro);
+
+									&.transparent{
+										@include opacidad(bg, #ffffff, 0.3, $shade: claro);
+									}
+
+
+									@include to(laptop) {
+										width: 140px;
+										height: 140px;
+									}
+
+									@include to(tablet-h) {
+										width: 120px;
+										height: 120px;
+									}
+
+
+									@include to(tablet) {
+										margin: 0px;
+										margin: 5px;
+									}
+
+									@include to(movil) {
+										width: 100px;
+										height: 100px;
+										
+									}
+
+									
+									hgroup{
+										@include align-self(center);
+									}
+									h3{
+										font: normal 600 em(81) $font1;
+										color: $color_t1;
+										text-align: center;
+										@include to(laptop) {
+											font-size: em(71);
+										}
+										@include to(tablet-h) {
+											font-size: em(61);
+										}
+										@include to(movil) {
+											font-size: em(51);
+										}
+									}
+									h6{
+										font: normal 400 em(18) $font1;
+										color: $color_t1;
+										text-align: center;
+										@include to(laptop) {
+											font-size: em(16);
+										}
+										@include to(tablet-h) {
+											font-size: em(15);
+										}
+										@include to(movil) {
+											font-size: em(12);
+										}
+									}
+								}
+									
+							}
+
+						}
+					}
+				}
+
+				.section1{
+
+					.align{
+						width: 60%;
+						height: 100vh;
+						position: relative;
+						margin: 0 auto;
+						@include to(tablet) {
+							width: 100%;
+							height: auto;
+						}
+						@include to(movil) {
+							width: 100%;
+						}
+					}
+
+					&__main{
+						padding: 20% 0 0 0;
+						@include to(tablet-h) {
+							padding: 20% 0 0 0;
+						}
+
+						@include to(tablet) {
+							padding: 84px 0 0 0;
+							background: #ef2539;
+						}
+
+						@include to(movil) {
+							padding: 64px 0 0 0;
+						}
+
+
+
+						.content{
+							width: 70%;
+							margin: 0 auto;
+
+							&.desktop{
+								@include to(tablet) {
+									display: none;
+								}
+							}
+
+							@include to(laptop-w) {
+								width: 95%;
+							}
+
+							@include to(laptop) {
+								width: 88%;
+							}
+
+							@include to(tablet-h) {
+								width: 85%;
+							}
+
+							@include to(tablet) {
+								width: 100%;
+							}
+
+							/*hgroup{
+								@include to(tablet) {
+									display: none;
+								}
+								h3{
+									font: normal 500 em(18) $font1;
+									color: #ffffff;
+									line-height: 0.89;
+									letter-spacing: 2px;
+									padding: 30px 0 10px;
+
+									@include to(laptop) {
+										font-size: em(16);
+									}
+								}
+							}*/
+
+							&__list{
+								@include flexbox;
+								@include flex-wrap(wrap);
+								@include justify-content(center);
+
+								@include to(tablet) {
+									@include flex-direction(column);
+								}
+
+								.item{
+									width: 224px;
+									height: 190px;
+									position: relative;
+									margin: 0 10px;
+
+									
+
+									/*@include to(laptop) {
+										width: 160px;
+										height: 160px;
+									}*/
+
+									@include to(tablet-h) {
+										width: 202px;
+										height: 171px;
+									}
+
+									@include to(tablet) {
+										width: 100%;
+										height: calc((100vh/ 3));
+										margin: 0px;
+										@include flexbox;
+										@include justify-content(flex-end);
+										/*width: math.div(100vw, 2);
+										height: calc((100vh/ 2) - 42px);
+										margin: 0px 0 0px;*/
+									}
+
+									@include to(movil) {
+										/*width: math.div(100vw, 2);
+										height: calc((100vh/ 2) - 32px);
+										margin: 0px 0 0px;*/
+									}
+
+
+
+									
+
+									&__image{
+										width: 100%;
+										height: 100%;
+										display: block;
+										position: relative;
+										cursor: pointer;
+										/*position: absolute;
+										top: 0px;
+										left: 0px;*/
+										
+										object-fit: cover;
+										background-size: cover;
+										background-position: center;
+										background-repeat: no-repeat;
+
+										@include to(tablet) {
+											position: absolute;
+											background-position: 70% 10%;
+										}
+
+										&.song1{
+											background-image: url("#{$path}/cancion/image1.png");
+
+											&:before{
+												content: '';
+												width: 72px;
+												height: 72px;
+												background-image: url("#{$path}/cancion/ojo.png");
+												background-size: cover;
+												display: block;
+												position: absolute;
+												top: 50%;
+												left: 50%;
+												margin-left: -36px;
+												margin-top: -36px;
+												pointer-events: none;
+												@include to(laptop) {
+													width: 60px;
+													height: 60px;
+													margin-left: -30px;
+													margin-top: -30px;
+												}
+												@include to(tablet) {
+													display: none;
+													width: 40px;
+													height: 40px;
+													margin-left: -20px;
+													margin-top: -20px;
+												}
+											}
+
+											@include to(tablet) {
+												background-image: url("#{$path}/cancion/image1_mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/abiud-mucha-meza-movil.jpg");
+											}*/
+											
+										}
+										&.song2{
+											background-image: url("#{$path}/cancion/image2.png");
+
+											&:before{
+												content: '';
+												width: 72px;
+												height: 72px;
+												background-image: url("#{$path}/cancion/letra.png");
+												background-size: cover;
+												display: block;
+												position: absolute;
+												top: 50%;
+												left: 50%;
+												margin-left: -36px;
+												margin-top: -36px;
+												pointer-events: none;
+												@include to(laptop) {
+													width: 60px;
+													height: 60px;
+													margin-left: -30px;
+													margin-top: -30px;
+												}
+												@include to(tablet) {
+													display: none;
+													width: 40px;
+													height: 40px;
+													margin-left: -20px;
+													margin-top: -20px;
+												}
+											}
+
+											@include to(tablet) {
+												background-image: url("#{$path}/cancion/image2_mobile.jpg");
+											}
+
+											/*@include to(movil) {
+												background-image: url("#{$path}/musicos/alma-moron-movil.jpg");
+											}*/
+										}
+										
+									}
+
+									hgroup{
+										width: 224px;
+										height: 80px;
+										background-color: #ef2539;
+										padding: 0px 30px;
+										position: relative;
+										display: table;
+										margin-bottom: 25px;
+										margin-right: 5%;
+										@include flexbox;
+
+										@include to(tablet-h) {
+											width: 202px;
+											height: 70px;
+										}
+
+										@include to(tablet) {
+											width: 232px;
+											height: auto;
+											padding: 20px 25px 25px;
+											margin-bottom: 0px;
+											z-index: 2;
+    									pointer-events: none;
+											@include align-self(center);
+											@include flex-direction(column);
+										}
+
+										@include to(movil) {
+											width: 182px;
+											height: auto;
+											padding: 10px 15px 15px;
+											margin-bottom: 0px;
+											z-index: 2;
+    									pointer-events: none;
+											@include align-self(center);
+											@include flex-direction(column);
+										}
+
+										span{
+											display: none;
+											@include to(tablet) {
+												display: block;
+											}
+
+											&.song1{
+
+												&:before{
+													content: '';
+													width: 24px;
+													height: 24px;
+													background-image: url("#{$path}/cancion/ojo.png");
+													background-size: 100%;
+													display: block;
+													position: relative;
+													pointer-events: none;
+													@include to(movil) {
+														width: 14px;
+														height: 14px;
+													}
+												}
+												
+											}
+											&.song2{
+
+												&:before{
+													content: '';
+													width: 24px;
+													height: 24px;
+													background-image: url("#{$path}/cancion/letra.png");
+													background-size: 100%;
+													display: block;
+													position: relative;
+													pointer-events: none;
+													@include to(movil) {
+														width: 14px;
+														height: 14px;
+													}
+												}
+
+											}
+										}
+
+										h3{
+											font: normal 400 em(17) $font1;
+											color: #ffffff;
+											line-height: 1.12;
+  										letter-spacing: 1.89px;
+											text-align: center;
+
+											@include align-self(center);
+
+											@include to(laptop) {
+												font-size: em(16);
+											}
+
+											@include to(tablet-h) {
+												font-size: em(15);
+											}
+
+											@include to(tablet) {
+												text-align: left;
+												font-size: em(15);
+												margin-top: 5px;
+											}
+
+											@include to(movil) {
+												text-align: left;
+												font-size: em(12);
+												margin-top: 5px;
+											}
+										}
+
+										&:after {
+											content: "";
+											position: absolute;
+											border-width: 6px;
+											border-style: solid;
+
+											//margin-left: -55px;
+											top: 100%;
+											left: 15%;
+											border-color: #ef2539 transparent transparent #ef2539;
+											//transform:translateY(-50%);
+
+											@include to(tablet) {
+												border-width: 8px;
+												margin-top: -5px;
+												top: 30%;
+												right: 100%;
+												bottom: inherit;
+												left: inherit;
+												border-color: #ef2539 #ef2539 transparent transparent ;
+												@include transicion(all,0.2s,ease,0s);
+											}
+
+											@include to(movil) {
+												border-width: 6px;
+												margin-top: -5px;
+												top: 30%;
+												right: 100%;
+												bottom: inherit;
+												left: inherit;
+												border-color: #ef2539 #ef2539 transparent transparent ;
+												@include transicion(all,0.2s,ease,0s);
+											}
+
+										}
+
+										.tooltip {
+											position: relative;
+											display: inline-block;
+											border-bottom: 1px dotted black;
+										}
+										.tooltip .tiptext {
+											visibility: hidden;
+											width: 120px;
+											background-color: black;
+											color: #fff;
+											text-align: center;
+											border-radius: 3px;
+											padding: 6px 0;
+											position: absolute;
+											z-index: 1;
+											box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+										}
+										.tooltip .tiptext::after {
+											content: "";
+											position: absolute;
+											border-width: 5px;
+											border-style: solid;
+										}
+										.tooltip:hover .tiptext {
+											visibility: visible;
+										}
+
+
+
+										.tooltip.top .tiptext{
+											margin-left: -60px;
+											bottom: 150%;
+											left: 50%;
+										}
+										.tooltip.top .tiptext::after{
+											margin-left: -5px;
+											top: 100%;
+											left: 50%;
+											border-color: #2E2E2E transparent transparent transparent;
+										}
+
+
+
+										.tooltip.bottom .tiptext{
+											margin-left: -60px;
+											top: 150%;
+											left: 50%;
+										}
+										.tooltip.bottom .tiptext::after{
+											margin-left: -5px;
+											bottom: 100%;
+											left: 50%;
+											border-color: transparent transparent #2E2E2E transparent;
+										}
+
+
+										.tooltip.left .tiptext{
+											top: -5px;
+											right: 110%;
+										}
+										.tooltip.left .tiptext::after{
+											margin-top: -5px;
+											top: 50%;
+											left: 100%;
+											border-color: transparent transparent transparent #2E2E2E;
+										}
+
+
+										.tooltip.right .tiptext{
+											top: -5px;
+											left: 110%;
+										}
+										.tooltip.right .tiptext::after{
+											margin-top: -5px;
+											top: 50%;
+											right: 100%;
+											border-color: transparent #2E2E2E transparent transparent;
+										}
+
+
+									}
+								}
+							}
+						}
+					}
+
+					&__footer{
+						padding: 150px 0 0 0;
+						@include to(tablet-h) {
+							padding: 130px 0 0 0;
+						}
+						@include to(tablet) {
+							padding: 60px 0 0 0;
+						}
+
+						@include to(movil) {
+							padding: 10% 0 0 0;
+						}
+						.content{
+							&__info{
+								padding: 0 0 20px;
+								h2{
+									font: normal 500 em(16) $font1;
+									color: #ffffff;
+									letter-spacing: 1px;
+									text-align: center;
+
+									@include to(tablet-h) {
+										font-size: em(15);
+									}
+
+									@include to(movil) {
+										font-size: em(13);
+									}
+								}
+							}
+							&__image{
+								@include flexbox;
+								@include flex-wrap(wrap);
+								@include justify-content(center);
+
+								div{
+									margin: 0 15px;
+								}
+
+								.claromusica{
+									width: 139px;
+									height: 24px;
+									background: url("#{$path}/cancion/claromusica.png") no-repeat 0px 0px;
+								}
+								.spotify{
+									width: 93px;
+									height: 31px;
+									background: url("#{$path}/cancion/spotify.png") no-repeat 0px 0px;
+								}
+								.music{
+									width: 82px;
+									height: 21px;
+									background: url("#{$path}/cancion/music.png") no-repeat 0px 0px;
+								}
+							}
+						}
+					}
+
+
+				}
+			}
+			
+		}
+	}
+}
+

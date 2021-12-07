@@ -1,0 +1,360 @@
+.layout{
+
+	&__main{
+		.page4{
+			position: relative;
+			&__header{
+				position: absolute;
+				
+				width: 100vw;
+				height: 100vh;
+							
+				object-fit: cover;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+
+				background-image: url("#{$path}/lucho/bg_lucho.jpg");
+
+
+				@include to(tablet-h) {
+					background-position: 60% center;					
+				}
+
+				@include to(tablet) {
+					background: url("#{$path}/lucho/bg_lucho-min.jpg") no-repeat;
+					height: 320px;
+				}
+
+				@include to(movil) {
+					background: url("#{$path}/lucho/bg_lucho-min-movil.jpg") no-repeat;
+					height: 293px;
+				}
+
+				//background-color: #ef2539;
+
+				/*&.bg5{
+					background-color: #ef2539;
+					//background-image: url("#{$path}/bg_proyectos.jpg");
+				}*/
+
+				.section1{
+					@include flexbox;
+
+					&__left{
+						width: 50%;
+						height: 100vh;
+						object-fit: cover;
+					  background-size: cover;
+					  background-repeat: no-repeat;
+					  background-position: center;
+
+					  @include flexbox;
+					  @include justify-content(flex-end);
+
+					  .number{
+					  	@include align-self(center);
+					  	h2{
+					  		font: normal 600 em(180) $font1;
+								color: #ef2539;
+								letter-spacing: -0.9px;
+					  	}
+					  }
+					}
+
+					&__right{
+						width: 50%;
+						height: 100vh;
+						background-color: #ffffff;
+
+						@include flexbox;
+					  @include justify-content(flex-start);
+					  
+					  .number{
+					  	@include align-self(center);
+					  	h2{
+					  		font: normal 600 em(180) $font1;
+								color: #ef2539;
+								letter-spacing: -0.9px;
+					  	}
+					  }
+					}
+
+				}
+
+			}
+
+			&__main{
+				position: relative;
+
+				.section1{
+					@include flexbox;
+					//@include justify-content(flex-end);
+
+					.align{
+						width: 82%;
+						margin-left: 18%;
+
+						@include to(tablet-h) {
+							width: 76%;
+							margin-left: 22%;
+						}
+
+						@include to(tablet) {
+							width: 76%;
+							margin: 0 auto;
+						}
+					}
+
+					&__main{
+						width: 60%;
+						//@include flexbox;
+						//@include justify-content(center);
+						//position: relative;
+						padding-top: 12%;
+						@include to(laptop) {
+							padding-top: 5%;
+						}
+
+						@include to(tablet-h) {
+							padding-top: 5%;
+						}
+
+						@include to(tablet) {
+							width: 100%;
+							padding: 290px 0 0%;
+						}
+
+						@include to(movil) {
+							width: 100%;
+							padding: 263px 0 0%;
+						}
+
+						.content{
+							//width: 60%;
+							//padding: 0 20%;
+							/*position: absolute;
+							width: 400px;
+							height: 400px;
+							left: 50%;
+							top: 50%;
+
+							margin-left: -200px;
+							margin-top: -200px;*/
+							//@include align-self(center);
+
+							//overflow: hidden;
+
+							&__info{
+								@include to(tablet) {
+									margin-bottom: 10%;
+								}
+								hgroup{
+									background-color: #ef2539;
+									padding: 18px 20px;
+									position: relative;
+									display: table;
+									margin-bottom: 25px;
+
+									h3{
+										font: normal 600 em(25) $font1;
+										color: #ffffff;
+										line-height: 1.0;
+		  							letter-spacing: 2px;
+		  							@include to(laptop) {
+											font-size: em(20);
+										}
+
+										@include to(tablet) {
+											font-size: em(18);
+										}
+
+									}
+
+									&:after {
+										content: "";
+										position: absolute;
+										border-width: 6px;
+										border-style: solid;
+
+										//margin-left: -55px;
+										top: 100%;
+										left: 15%;
+										border-color: #ef2539 transparent transparent #ef2539;
+										//transform:translateY(-50%);
+									}
+
+									.tooltip {
+										position: relative;
+										display: inline-block;
+										border-bottom: 1px dotted black;
+									}
+									.tooltip .tiptext {
+										visibility: hidden;
+										width: 120px;
+										background-color: black;
+										color: #fff;
+										text-align: center;
+										border-radius: 3px;
+										padding: 6px 0;
+										position: absolute;
+										z-index: 1;
+										box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+									}
+									.tooltip .tiptext::after {
+										content: "";
+										position: absolute;
+										border-width: 5px;
+										border-style: solid;
+									}
+									.tooltip:hover .tiptext {
+										visibility: visible;
+									}
+
+
+
+									.tooltip.top .tiptext{
+										margin-left: -60px;
+										bottom: 150%;
+										left: 50%;
+									}
+									.tooltip.top .tiptext::after{
+										margin-left: -5px;
+										top: 100%;
+										left: 50%;
+										border-color: #2E2E2E transparent transparent transparent;
+									}
+
+
+
+									.tooltip.bottom .tiptext{
+										margin-left: -60px;
+										top: 150%;
+										left: 50%;
+									}
+									.tooltip.bottom .tiptext::after{
+										margin-left: -5px;
+										bottom: 100%;
+										left: 50%;
+										border-color: transparent transparent #2E2E2E transparent;
+									}
+
+
+									.tooltip.left .tiptext{
+										top: -5px;
+										right: 110%;
+									}
+									.tooltip.left .tiptext::after{
+										margin-top: -5px;
+										top: 50%;
+										left: 100%;
+										border-color: transparent transparent transparent #2E2E2E;
+									}
+
+
+									.tooltip.right .tiptext{
+										top: -5px;
+										left: 110%;
+									}
+									.tooltip.right .tiptext::after{
+										margin-top: -5px;
+										top: 50%;
+										right: 100%;
+										border-color: transparent #2E2E2E transparent transparent;
+									}
+
+
+								}
+
+								h4{
+									font: normal 600 em(22) $font1;
+									color: $color_t1;
+									line-height: 0.86;
+  								letter-spacing: 2.44px;
+  								margin-bottom: 30px;
+  								@include to(laptop) {
+										font-size: em(18);
+									}
+
+									@include to(tablet) {
+										font-size: em(19);
+										color: #000000;
+									}
+								}
+
+								p{
+									font: normal 400 em(15) $font2;
+									color: $color_t1;
+									//display: inline-block;
+									//margin: 0 20px;
+									line-height: 1.34;
+									letter-spacing: 1.5px;
+									margin-bottom: 20px;
+									@include to(laptop) {
+										font-size: em(13);
+									}
+
+									@include to(tablet-h) {
+										font-size: em(11);
+									}
+
+									@include to(tablet) {
+										font-size: em(15);
+										color: $color_t2;
+									}
+								}
+
+								/*p{
+									font: normal 400 em(14) $font2;
+									color: $color_t1;
+									//display: inline-block;
+									//margin: 0 20px;
+									line-height: 1.54;
+									letter-spacing: 1.5px;
+									margin-bottom: 20px;
+
+									@include to(laptop) {
+										font-size: em(12);
+										line-height: 1.34;
+									}
+
+									@include to(tablet-h) {
+										font-size: em(11);
+										line-height: 1.34;
+									}
+
+									@include to(tablet) {
+										font-size: em(15);
+										color: #000000;
+									}
+								}*/
+							}
+						}
+
+						.buttons{
+							width: 100%;
+							margin: 4% 0 0;
+							text-align: right;
+							button{
+								font: normal 600 em(18) $font1;
+								color: #000000;
+								margin-right: 10px;
+								display: inline-block;
+								width: 40px;
+								height: 40px;
+
+								&.swiper-button-disabled{
+									color: #cfcfcf;
+								}
+							}
+						}
+						
+					}
+
+				}
+			}
+			
+		}
+	}
+}
+

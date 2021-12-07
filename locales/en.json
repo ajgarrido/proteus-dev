@@ -1,0 +1,48 @@
+{
+  "menu":[
+    {
+      "name": "Intro",
+      "url": "/"
+    },
+    {
+      "name": "Teaser",
+      "url": "/teaser"
+    },
+    {
+      "name": "Miniclips",
+      "url": "/miniclips"
+    },
+    {
+      "name": "Project",
+      "url": "/proyecto"
+    },
+    {
+      "name": "Lucho",
+      "url": "/lucho"
+    },
+    {
+      "name": "Musicians",
+      "url": "/musicos"
+    },
+    {
+      "name": "Song",
+      "url": "/cancion"
+    },
+    {
+      "name": "Documentary",
+      "url": "/documental"
+    },
+    {
+      "name": "Gift",
+      "url": "/regalo"
+    }
+  ],
+  "contador": {
+    "solofaltan": "Solo Faltan",
+    "dias": "Días",
+    "horas": "Horas",
+    "minutos": "Minutos",
+    "Segundos": "Segundos",
+    "estreno": "para el estreno de la canción"
+  }
+}

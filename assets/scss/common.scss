@@ -1,0 +1,62 @@
+@use "sass:math";
+
+/* Library  */
+
+//@import "library/font-awesome/font-awesome";
+//@import "library/fontawesome-pro/scss/fontawesome";
+@import "library/fontawesome-pro/scss/regular";
+@import "library/fontawesome-pro/scss/light";
+@import "library/fontawesome-pro/scss/solid";
+@import "library/fontawesome-pro/scss/duotone";
+@import "library/fontawesome-pro/scss/brands";
+
+
+/* Base  */
+
+//@import "helpers/fonts";
+@import "helpers/fonts";
+@import "helpers/vars";
+@import "helpers/mixins";
+@import "helpers/reset";
+@import "helpers/extends";
+@import "helpers/responsive";
+@import "helpers/extras";
+@import "helpers/functions";
+@import "helpers/flexbox";
+
+//@import "library/toastr";
+//@import "library/jquery.fullpage";
+//@import "library/ui.totop";
+//@import "library/magiczoomplus/magiczoomplus";
+//@import "library/magiczoomplus/magiczoomplus.module";
+
+@import "core/layout";
+
+@import "pages/page1";
+@import "pages/page2";
+/*@import "pages/page3";
+@import "pages/page4";
+@import "pages/page5";
+@import "pages/page6";
+@import "pages/page7";
+@import "pages/page8";*/
+
+@import "pages/modals";
+
+/* Library  */
+
+
+//@import "library/revolution/css/settings";
+//@import "library/revolution/css/layers";
+//@import "library/revolution/css/navigation";
+
+//@import "library/slick/slick";
+//@import "library/slick/slick-theme";
+
+//@import "library/lightGallery/lightgallery";
+
+//@import "library/owlcarousel/owl.carousel.min";
+//@import "library/owlcarousel/owl.theme.default.min";
+
+
+/******************************************/

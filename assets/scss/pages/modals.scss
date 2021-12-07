@@ -1,0 +1,389 @@
+.layout{
+
+	&__modals{
+
+		.v--modal{
+			background: transparent;
+			box-shadow: none;
+
+		}		
+
+		.v--modal-overlay{
+			background: rgba(0, 0, 0, 0.9);
+		}
+
+		.spacer{
+			padding: 30px;
+		}
+
+		.block{
+			
+			//padding: 50px;
+			//background-color: #fff;
+			//overflow: hidden;
+			&__header{
+				position: relative;
+				button{
+					position: absolute;
+					top: 0px;
+					right: -30px;
+					width: 30px;
+					height: 30px;
+					background-color: #006351;
+					border: 0px;
+					font: normal 800 em(16) $font1;
+					color: #ffffff;
+					cursor: pointer;
+					@include transicion(all,0.2s,ease,0s);
+
+					@include redondeado(0px, 5px, 0px, 5px);
+
+					@include to(tablet) {
+						right: -40px;
+						width: 30px;
+						height: 30px;
+						font: normal 800 em(16) $font1;
+					}
+
+					@include to(movil) {
+						top: -20px;
+						right: 0px;
+						width: 20px;
+						height: 20px;
+						font: normal 800 em(14) $font1;
+					}
+
+					&:hover{
+						background-color: #f5e9b5;
+						color: #006351;
+						@include transicion(all,0.2s,ease,0s);
+					}
+				}
+			}
+			&__main{
+				@include redondeado(5px, 0px, 5px, 5px);
+				overflow: hidden;
+				background-color: #fff;
+				.result{
+					//@include redondeado(5px, 0px, 5px, 5px);
+					//overflow: hidden;
+					@include flexbox;
+					@include justify-content(center);
+					//height: 100%;
+					//padding: 50px 0 0 0;
+					height: 250px;
+					
+					&__main{
+						//width: 100%;
+						
+						@include align-self(center);
+						//background-color: red;
+
+						hgroup{
+							padding: 0 0 30px 0;
+							h3{
+								font: normal 600 em(22) $font1;
+								color: #000000;
+								line-height: 16px;
+								padding-bottom: 10px;
+								//text-align: center;
+								//@include align-self(center);
+								span{
+									//font-weight: 400;
+									font: normal 400 em(15) $font1;
+								}
+							}
+							h5{
+								font: normal 400 em(14) $font1;
+								color: #000000;
+								line-height: 16px;
+								margin-top: 2px;
+								//text-align: center;
+								//@include align-self(center);
+							}
+						}
+
+						.progress{
+
+							@include flexbox;
+							@include justify-content(center);
+							&__step{
+								width: 110px;
+								height: 60px;
+								padding: 0 10px;
+								@include redondeado(5px, 5px, 5px, 5px);
+								background-color: #f5e9b5;
+								//@include flexbox;
+								//text-align: center;
+								display: table;
+
+								h4{
+									font: normal 500 em(14) $font1;
+									color: #000000;
+									line-height: 18px;
+									display: table-cell;
+									vertical-align: middle;
+									text-align: center;
+									//@include align-self(center);
+								}
+
+								&.active{
+									background-color: #006351;
+									h4{
+										color: #ffffff;
+										font-weight: 400;
+									}
+								}
+
+							}
+							&__arrow{
+								@include align-self(center);
+								&:before {
+									//content: "\f0f4";
+									content: "\f178";
+									@include icon(0px);
+									//@include transicion(all,0.0s,cubic-bezier(0.17, 0.04, 0.03, 0.94),0s);
+
+
+							    //transform: translateY(-45%);
+							    //transition: all 0.15s ease-in;
+
+									font-size: 20px;
+									color: #006351;
+									display: block;
+									margin: 0 10px;
+									//width: 20px;
+									//position: relative;
+									//top: 50%;
+								}
+								 
+							}
+						}
+					}
+				}
+				.content{
+					@include flexbox;
+					&__image{
+						background: url("#{$path}/pruebas.jpg") no-repeat 50% center;
+						background-size: cover;
+						width: 55%;
+						height: 250px;
+					}
+					&__info{
+						width: 45%;
+						
+						form{
+							padding: 0px 30px 0px;
+							height: 100%;
+							//@include flexbox;
+							//@include flex-direction(column);
+							//@include flex-wrap(wrap);
+							//@include align-content(space-between);
+
+							//align-content: space-between;
+							position: relative;
+
+							fieldset{
+								padding: 0px;
+								margin: 0px;
+
+								hgroup{
+									padding: 25px 0 20px 0;
+									h3{
+										font: normal 600 em(19) $font1;
+										color: #000000;
+									}
+								}
+
+								dl{
+								
+									dt{
+										label{
+											font: normal 400 em(14) $font1;
+											color: #000000;
+											display: block;
+											margin-bottom: 10px;
+										}
+										input{
+											width: 100%;
+											font: normal 400 em(14) $font1;
+											color: #000000;
+											padding: 5px 10px;
+										}
+									}
+									dd{
+										.error{
+											font: normal 300 em(12) $font1;
+											color: #ef2539;
+											line-height: 14px;
+										}
+									}
+
+
+									
+								}
+							}
+
+							legend{
+								width: 210px;
+								padding: 0px;
+								margin: 0px;
+
+								position: absolute;
+								bottom: 30px;
+								//left: 50%;
+
+								//margin-left: -80px;
+
+								button{
+									//position: absolute;
+									//bottom: 0px;
+									display: inline-block;
+									font: normal 400 em(14) $font1;
+									color: #ffffff;
+									letter-spacing: .65px;
+									line-height: 24px;
+
+
+									//margin-top: 40px;
+									//min-width: 200px;
+									width: 100%;
+									padding: 10px 0px;
+
+									background-color: #006351;
+									@include redondeado(5px, 5px, 5px, 5px);
+									@include transicion(all,0.4s,ease,0s);
+									text-align: center;
+									cursor: pointer;
+									position: relative;
+									overflow: hidden;
+
+									text-transform: uppercase;
+
+									border: 1px solid #006351;
+									
+									@include to(tablet) {
+										width: 140px;
+										font-size: em(13);
+										margin-top: 15px;
+									}
+									@include to(movil) {
+										width: 120px;
+										font-size: em(12);
+										margin-top: 15px;
+									}
+
+									&.inactive{
+										border: 1px solid #cccccc;
+										background-color: #cccccc;
+										color: #ffffff;
+										cursor: default;
+										&:hover{
+											background-color: #cccccc;
+											color: #ffffff;
+											&:after{
+											  left: -75px;
+										  }
+										}
+									}
+
+
+									&:after {
+								    background: #fff;
+								    content: "";
+								    width: 50px;
+								    height: 155px;
+								    left: -75px;
+								    position: absolute;
+								    top: -50px;
+								    @include trans(.3);
+								    @include rotate(35);
+								    @include transicion(left,550ms,ease,0s);
+								    z-index: 1;
+								  }
+									&:hover{
+										@include transicion(all,0.4s,ease,0s);
+										background-color: #f5e9b5;
+										color: #006351;
+										&:after{
+										  left: 120%;
+										  @include transicion(left,1.2s,easeout,0.2s);
+									  }
+									}
+								}
+							}
+
+							
+
+							
+
+
+						}
+
+					}
+				}
+			}
+		}
+
+		.video{
+			padding: 50px;
+			@include to(tablet) {
+				padding: 40px;
+			}
+			@include to(movil) {
+				padding: 20px;
+			}
+			&__header{
+				position: relative;
+				button{
+					position: absolute;
+					top: 0px;
+					right: -50px;
+					width: 40px;
+					height: 40px;
+					background-color: #ffffff;
+					border: 0px;
+					font: normal 800 em(20) $font2;
+					color: #ef2539;
+					cursor: pointer;
+					@include transicion(all,0.2s,ease,0s);
+
+					@include to(tablet) {
+						right: -40px;
+						width: 30px;
+						height: 30px;
+						font: normal 800 em(16) $font2;
+					}
+
+					@include to(movil) {
+						top: -20px;
+						right: 0px;
+						width: 20px;
+						height: 20px;
+						font: normal 800 em(14) $font2;
+					}
+
+					&:hover{
+						background-color: #ef2539;
+						color: #ffffff;
+						@include transicion(all,0.2s,ease,0s);
+					}
+				}
+			}
+			
+		  &__iframe{
+		  	width: 100%;
+			  padding-top: 56.25%;
+			  position: relative;
+		  	iframe{
+					display: block;
+					position: absolute;
+				  top: 0;
+				  left: 0;
+				  width: 100%;
+				  height: 100%;
+				}	
+		  }
+		}
+	}
+}
